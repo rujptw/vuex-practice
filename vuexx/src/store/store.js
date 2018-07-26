@@ -16,7 +16,8 @@ const store = new Vuex.Store({
       state.count++;
     },
     [DECREMENT](state,payload){
-      state.num -= payload.num;
+      //mapAction传参，参数要一直传递下去：事件函数===>action===>mutation
+      state.num -=payload.num;
       state.count--;
     }
   },
@@ -26,8 +27,8 @@ const store = new Vuex.Store({
     increment({commit}){
       commit("INCREMENT")
     },
-    decrement({commit}){
-      commit("DECREMENT")
+    decrement({commit},payload){
+      commit("DECREMENT",payload)
     }
   }
 });
